@@ -1,39 +1,15 @@
-const machineryOwners = [
-  {
-    id: 1,
-    name: "Joseph K.A.",
-    type: "Combine harvester · 4.2 acres/day",
-    location: "3.1 km · Pananchery",
-    status: "Available",
-    statusColor: "bg-[#E5EEDB] text-[#2D5016]",
-  },
-  {
-    id: 2,
-    name: "Babu Machines",
-    type: "Combine harvester + tractor",
-    location: "5.6 km · Mattathur",
-    status: "Busy till Fri",
-    statusColor: "bg-[#F1E3D3] text-[#4A3728]",
-  },
-  {
-    id: 3,
-    name: "Anwar Rentals",
-    type: "Power tiller, thresher",
-    location: "1.8 km · Chalakudy town",
-    status: "Available",
-    statusColor: "bg-[#E5EEDB] text-[#2D5016]",
-  },
-  {
-    id: 4,
-    name: "Rasheed",
-    type: "Power tiller",
-    location: "1.8 km · Kuttipuram",
-    status: "Available",
-    statusColor: "bg-[#E5EEDB] text-[#2D5016]",
-  },
-];
+import { PrismaClient } from "../generated/prisma/client";
+import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
 
-export default function Harvest() {
+const adapter = new PrismaBetterSqlite3({
+  url: process.env.DATABASE_URL,
+});
+
+const prisma = new PrismaClient({ adapter });
+
+export default async function Harvest() {
+  const machineryOwners = await prisma.machineryOwner.findMany();
+
   return (
     <div className="min-h-screen bg-[#FDF8ED] pb-10">
       <div className="p-5 bg-white border-b border-[#E3D8C0]">
@@ -55,7 +31,7 @@ export default function Harvest() {
             <div className="flex-1">
               <div className="flex items-center gap-2 flex-wrap">
                 <span className="font-bold text-sm">{owner.name}</span>
-                <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${owner.statusColor}`}>
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#E5EEDB] text-[#2D5016]">
                   {owner.status}
                 </span>
               </div>
