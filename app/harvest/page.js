@@ -1,11 +1,4 @@
-import { PrismaClient } from "../generated/prisma/client";
-import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
-
-const adapter = new PrismaBetterSqlite3({
-  url: process.env.DATABASE_URL,
-});
-
-const prisma = new PrismaClient({ adapter });
+import { prisma } from "../../lib/prisma";
 
 export default async function Harvest() {
   const machineryOwners = await prisma.machineryOwner.findMany();

@@ -1,31 +1,8 @@
-const officers = [
-  {
-    id: 1,
-    icon: "🧑🏾‍🌾",
-    name: "Krishi Bhavan, Chalakudy",
-    detail: "Agricultural Officer: Smt. Latha P.",
-    hours: "Open 10am–5pm, Mon–Sat",
-    showWhatsapp: true,
-  },
-  {
-    id: 2,
-    icon: "☎️",
-    name: "Kisan Call Centre",
-    detail: "Toll-free helpline · All India",
-    hours: "6am–10pm, every day",
-    showWhatsapp: false,
-  },
-  {
-    id: 3,
-    icon: "🧪",
-    name: "Soil Testing Lab, Irinjalakuda",
-    detail: "Pesticide & soil queries",
-    hours: "12.4 km away",
-    showWhatsapp: false,
-  },
-];
+import { prisma } from "../../lib/prisma";
 
-export default function Officers() {
+export default async function Officers() {
+  const officers = await prisma.officer.findMany();
+
   return (
     <div className="min-h-screen bg-[#FDF8ED] pb-10">
       <div className="p-5 bg-white border-b border-[#E3D8C0]">

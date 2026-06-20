@@ -19,3 +19,31 @@ model MachineryOwner {
   status    String
   createdAt DateTime @default(now())
 }
+model Variety {
+  id          Int    @id @default(autoincrement())
+  name        String
+  tag         String
+  fit         Int
+  duration    String
+  yieldAmount String
+  pestRisk    String
+  availableAt String
+}
+
+model Buyer {
+  id       Int    @id @default(autoincrement())
+  name     String
+  price    String
+  detail   String
+  status   String
+  location String
+}
+
+model Officer {
+  id            Int     @id @default(autoincrement())
+  icon          String
+  name          String
+  detail        String
+  hours         String
+  showWhatsapp  Boolean @default(false)
+}

@@ -1,23 +1,8 @@
-const buyers = [
-  {
-    id: 1,
-    name: "Supplyco — Chalakudy",
-    price: "₹28.20/kg",
-    detail: "Govt procurement",
-    status: "Open today",
-    location: "2.0 km",
-  },
-  {
-    id: 2,
-    name: "Annapoorna Rice Mill",
-    price: "₹29.00/kg",
-    detail: "Private mill",
-    status: "Pickup available",
-    location: "6.4 km",
-  },
-];
+import { prisma } from "../../lib/prisma";
 
-export default function Sell() {
+export default async function Sell() {
+  const buyers = await prisma.buyer.findMany();
+
   return (
     <div className="min-h-screen bg-[#FDF8ED] pb-10">
       <div className="p-5 bg-white border-b border-[#E3D8C0]">

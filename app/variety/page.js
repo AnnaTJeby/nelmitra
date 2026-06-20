@@ -1,40 +1,8 @@
-const varieties = [
-  {
-    id: 1,
-    name: "Uma (MO 16)",
-    tag: "Best match for your soil & water record",
-    fit: 94,
-    duration: "115–120d",
-    yield: "6.5 t/ha",
-    pestRisk: "Medium",
-    availableAt: "Kerala Seed Dev. Authority, Irinjalakuda · 6.5 km",
+import { prisma } from "../../lib/prisma";
 
-  },
-  {
-    id: 2,
-    name: "Jyothi",
-    tag: "Strong choice if rain comes early",
-    fit: 87,
-    duration: "125–130d",
-    yield: "5.8 t/ha",
-    pestRisk: "Low",
-    availableAt: "Kerala Seed Dev. Authority, Irinjalakuda · 6.5 km",
+export default async function Variety() {
+  const varieties = await prisma.variety.findMany();
 
-  },
-  {
-    id: 3,
-    name: "Kanchana",
-    tag: "Good for flood-prone low fields",
-    fit: 79,
-    duration: "130–135d",
-    yield: "5.2 t/ha",
-    pestRisk: "Low",
-    availableAt: "Krishi Bhavan, Chalakudy · 2.0 km",
-
-  },
-];
-
-export default function Variety() {
   return (
     <div className="min-h-screen bg-[#FDF8ED] pb-10">
       <div className="p-5 bg-white border-b border-[#E3D8C0]">
@@ -67,12 +35,8 @@ export default function Variety() {
                 <div className="text-[10px] text-[#5C5448]">Duration</div>
               </div>
               <div className="flex-1 text-center py-2 border-r border-[#E3D8C0]">
-                <div className="font-bold text-[13px]">{v.yield}</div>
+                <div className="font-bold text-[13px]">{v.yieldAmount}</div>
                 <div className="text-[10px] text-[#5C5448]">Avg yield</div>
-              </div>
-              <div className="flex-1 text-center py-2">
-                <div className="font-bold text-[13px]">{v.pestRisk}</div>
-                <div className="text-[10px] text-[#5C5448]">Pest risk</div>   
               </div>
               <div className="flex-1 text-center py-2">
                 <div className="font-bold text-[13px]">{v.pestRisk}</div>
@@ -89,7 +53,7 @@ export default function Variety() {
                 📞
               </button>
             </div>
-            </div>
+          </div>
         ))}
       </div>
     </div>
