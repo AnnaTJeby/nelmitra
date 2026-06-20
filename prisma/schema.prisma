@@ -47,3 +47,14 @@ model Officer {
   hours         String
   showWhatsapp  Boolean @default(false)
 }
+model HayListing {
+  id        Int      @id @default(autoincrement())
+  type      String
+  name      String
+  phone     String
+  location  String
+  quantity  String
+  purpose   String?
+  price     String?
+  createdAt DateTime @default(now())
+}
