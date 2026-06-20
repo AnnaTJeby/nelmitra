@@ -88,6 +88,13 @@ export default function Home() {
   <div className="text-xs text-[#5C5448] mt-0.5">Krishi Bhavan, your block</div>
 </Link>
 </div>
+<Link href="/hay" className="col-span-2 bg-white border border-[#E3D8C0] rounded-2xl p-4 text-left active:scale-95 transition-transform block">
+  <div className="w-9 h-9 rounded-[10px] bg-[#EBE0D2] flex items-center justify-center text-lg mb-2">
+    🌿
+  </div>
+  <div className="font-bold text-sm">Straw & hay board</div>
+  <div className="text-xs text-[#5C5448] mt-0.5">Buy or sell paddy straw</div>
+</Link>
 
     </div>
   );
